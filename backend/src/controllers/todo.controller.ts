@@ -10,5 +10,14 @@ export const TodoController = {
       } catch (error) {
          next(error)
       }
-   }
+   },
+   async queryTodo(req: Request, res: Response, next: NextFunction) {
+      try {
+         const response = await TodoService.query(req.body.id)
+
+         return res.status(200).json(response)
+      } catch (error) {
+         next(error)
+      }
+   },
 }
