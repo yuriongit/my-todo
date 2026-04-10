@@ -1,31 +1,32 @@
 {
-   "name": "backend",
-   "module": "index.ts",
-   "type": "module",
-   "private": true,
-   "devDependencies": {
-      "@types/bun": "^1.3.11",
-      "@types/cors": "^2.8.19",
-      "@types/express": "^5.0.6",
-      "@types/express-rate-limit": "^6.0.2",
-      "@types/express-slow-down": "^2.0.0",
-      "@types/jsonwebtoken": "^9.0.10",
-      "supabase": ">=1.8.1"
-   },
-   "scripts": {
-      "dev": "bun run --watch src/index.ts",
-      "start": "bun run src/app/index.ts"
-   },
-   "peerDependencies": {
-      "typescript": "^5"
-   },
-   "dependencies": {
-      "@supabase/supabase-js": "^2.102.1",
-      "cors": "^2.8.6",
-      "express": "^5.2.1",
-      "express-rate-limit": "^8.3.2",
-      "express-slow-down": "^3.1.0",
-      "jsonwebtoken": "^9.0.3",
-      "zod": "^4.3.6"
-   }
+	"name": "backend",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"devDependencies": {
+		"@types/bun": "^1.3.11",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/express-rate-limit": "^6.0.2",
+		"@types/express-slow-down": "^2.0.0",
+		"@types/jsonwebtoken": "^9.0.10",
+		"supabase": ">=1.8.1"
+	},
+	"scripts": {
+		"format": "bunx --bun @biomejs/biome format --write",
+		"dev": "bun run --watch src/index.ts",
+		"start": "bun run src/app/index.ts"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.102.1",
+		"cors": "^2.8.6",
+		"express": "^5.2.1",
+		"express-rate-limit": "^8.3.2",
+		"express-slow-down": "^3.1.0",
+		"jsonwebtoken": "^9.0.3",
+		"zod": "^4.3.6"
+	}
 }
