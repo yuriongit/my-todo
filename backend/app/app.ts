@@ -1,5 +1,5 @@
 import express from "express";
-import { corsConfig } from "./config/cors";
+import { corsConfig } from "@config/cors";
 
 export const app = express();
 

@@ -7,17 +7,26 @@
 		"moduleDetection": "force",
 		"jsx": "react-jsx",
 		"allowJs": true,
+
+      // Types for testing w/ Bun
 		"types": ["bun"],
 
-		// MUST HAVE
+		// Configuration for restriction + improved type-safety
 		"paths": {
 			"@/*": ["./src/*"],
-			"@app/*": ["./app/*"],
+			
+         // App directory
+         "@app/*": ["./app/*"],
+			"@config/*": ["./app/config/*"],
+			"@tests/*": ["./app/tests/*"],
+         
+         // Source directory
 			"@controllers/*": ["./src/controllers/*"],
-			"@services/*": ["./src/services/*"],
 			"@middleware/*": ["./src/middleware/*"],
+         "@repo/*": ["./src/repo/*"],
+			"@schemas/*": ["./src/schemas/*"],
+			"@services/*": ["./src/services/*"],
 			"@utils/*": ["./src/utils/*"],
-			"@schemas/*": ["./src/schemas/*"]
 		},
 		"allowUnusedLabels": false,
 		"noUncheckedSideEffectImports": true,
@@ -26,7 +35,7 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"pretty": true,
-		// MUST HAVE
+		// Configuration for restriction + improved type-safety
 
 		// Bundler mode
 		"moduleResolution": "bundler",
