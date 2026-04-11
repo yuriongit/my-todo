@@ -1,11 +1,11 @@
 import { app } from "@app/app"
 import { validateBody } from "@middleware/validators/todoSchema.validator"
-import { createTodoSchema, todoQuerySchema } from "@schemas/todo.schema"
+import { createTodoSchema, queryTodoSchema } from "@schemas/todo.schema"
 import { handleError } from "@/middleware/error/errorHandler"
 import { TodoController } from "./controllers/todo.controller"
 
 app.post("/todos", validateBody(createTodoSchema), TodoController.createTodo)
-app.get("/todos", validateBody(todoQuerySchema), TodoController.queryTodo)
+app.get("/todos", validateBody(queryTodoSchema), TodoController.queryTodo)
 
 app.use(handleError)
 
