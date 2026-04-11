@@ -1,15 +1,16 @@
 import { app } from "@app/app"
 import { validateBody } from "@middleware/validators/todoSchema.validator"
-import { createTodoSchema, deleteTodoSchema, queryTodoSchema } from "@schemas/todo.schema"
+import { createTodoSchema, deleteTodoSchema, queryTodoSchema, updateTodoSchema } from "@schemas/todo.schema"
 import { handleError } from "@/middleware/error/errorHandler"
 import { TodoController } from "./controllers/todo.controller"
 
 app.post("/todos", validateBody(createTodoSchema), TodoController.createTodo)
 app.get("/todos", validateBody(queryTodoSchema), TodoController.queryTodo)
+app.put("/todos", validateBody(updateTodoSchema), TodoController.updateTodo)
 app.delete("/todos", validateBody(deleteTodoSchema), TodoController.deleteTodo)
 
 app.use(handleError)
 
 app.listen(Number(process.env.PORT), "0.0.0.0", () =>
-	console.log(`Server up and running:\nhttp://localhost:${process.env.PORT}`),
+   console.log(`Server up and running:\nhttp://localhost:${process.env.PORT}`),
 )
