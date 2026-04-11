@@ -1,38 +1,29 @@
 import type { NextFunction, Request, Response } from "express"
-import type z from "zod/v4"
+import type {
+   CreatedTodoResponse,
+   CreateTodo,
+   DeleteTodoResponse,
+   QueryTodoResponse,
+} from "@/controllers/todo.controller"
 import { TodoRepo } from "@/repo/todo.repo"
-import type { todoSchema } from "@/schemas/todo.schema"
-
-// To-do Types
-export type Todo = z.infer<typeof todoSchema>
-export type CreateTodo = Omit<Todo, keyof Pick<Todo, "id">>
-export type QueryTodo = Pick<Todo, "id">
-
-// Response Types
-export type CreatedTodoResponse = {
-	message: string
-	todo: CreateTodo
-}
-export type QueryTodoResponse = Todo
 
 export const TodoService = {
-	async create(todo: CreateTodo): Promise<CreatedTodoResponse> {
-		const response = await TodoRepo.insert(todo)
+   async create(todo: CreateTodo): Promise<CreatedTodoResponse> {
+      const response = await TodoRepo.insert(todo)
 
-		return {
-			message: response.message,
-			todo: todo,
-		}
-	},
-	async query(todoId: number): Promise<QueryTodoResponse> {
-		const response = await TodoRepo.query(todoId)
+      return response
+   },
+   async query(todoId: number): Promise<QueryTodoResponse> {
+      const response = await TodoRepo.query(todoId)
 
-		return response
-	},
-	async update(_req: Request, _res: Response, _next: NextFunction) {
-		return null
-	},
-	async delete(_req: Request, _res: Response, _next: NextFunction) {
-		return null
-	},
+      return response
+   },
+   async update(_req: Request, _res: Response, _next: NextFunction) {
+      return null
+   },
+   async delete(todoId: number): Promise<DeleteTodoResponse> {
+      const response = await TodoRepo.delete(todoId)
+
+      return response
+   },
 }
