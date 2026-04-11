@@ -1,4 +1,4 @@
-import { z } from "zod/v4";
+import { z } from "zod/v4"
 
 export const todoSchema = z.strictObject({
 	id: z.number().min(1),
@@ -6,8 +6,8 @@ export const todoSchema = z.strictObject({
 	desc: z.string().min(10).max(150),
 })
 
-export const createTodoSchema = todoSchema.omit({ 
-   id: true 
+export const createTodoSchema = todoSchema.omit({
+	id: true,
 })
 
 export const todoQuerySchema = z.strictObject({

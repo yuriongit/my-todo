@@ -1,28 +1,53 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
-	"vcs": {
-		"enabled": false,
-		"clientKind": "git",
-		"useIgnoreFile": false
-	},
-	"files": {
-		"ignoreUnknown": false
-	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-      "lineWidth": 100
+		"lineWidth": 100,
+		"indentWidth": 3
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"style": {
+				"noNonNullAssertion": "on"
+			},
+			"suspicious": {
+				"noExplicitAny": "error",
+				"noDebugger": "error",
+				"noDuplicateObjectKeys": "error",
+				"noDuplicateParameters": "error",
+				"noDoubleEquals": "error",
+				"noConsole": "off"
+			},
+			"correctness": {
+				"noUnusedVariables": "error",
+				"noUnreachable": "error",
+				"noConstAssign": "error",
+				"noGlobalObjectCalls": "error"
+			},
+			"complexity": {
+				"noBannedTypes": "error",
+				"noUselessCatch": "error",
+				"noUselessConstructor": "error",
+				"useOptionalChain": "error",
+				"noExcessiveCognitiveComplexity": {
+					"level": "warn",
+					"options": { "maxAllowedComplexity": 15 }
+				}
+			},
+			"security": {
+				"noGlobalEval": "error"
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double",
-         "semicolons": "asNeeded"
+			"semicolons": "asNeeded",
+			"trailingCommas": "all",
+			"arrowParentheses": "always"
 		}
 	},
 	"assist": {

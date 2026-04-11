@@ -14,6 +14,10 @@
 	},
 	"scripts": {
 		"format": "bunx --bun @biomejs/biome format --write",
+		"lint": "bunx --bun @biomejs/biome lint",
+		"check": "bunx --bun @biomejs/biome check",
+		"lint:write": "bunx --bun @biomejs/biome lint --write",
+		"check:write": "bunx --bun @biomejs/biome check --write",
 		"dev": "bun run --watch src/index.ts",
 		"start": "bun run src/app/index.ts"
 	},

@@ -1,7 +1,7 @@
-import { TodoRepo } from "@/repo/todo.repo";
-import { todoSchema } from "@/schemas/todo.schema";
-import type { Request, Response, NextFunction } from "express";
-import type z from "zod/v4";
+import type { NextFunction, Request, Response } from "express"
+import type z from "zod/v4"
+import { TodoRepo } from "@/repo/todo.repo"
+import type { todoSchema } from "@/schemas/todo.schema"
 
 // To-do Types
 export type Todo = z.infer<typeof todoSchema>
@@ -29,6 +29,10 @@ export const TodoService = {
 
 		return response
 	},
-	async update(_req: Request, _res: Response, _next: NextFunction) {},
-	async delete(_req: Request, _res: Response, _next: NextFunction) {},
+	async update(_req: Request, _res: Response, _next: NextFunction) {
+		return null
+	},
+	async delete(_req: Request, _res: Response, _next: NextFunction) {
+		return null
+	},
 }

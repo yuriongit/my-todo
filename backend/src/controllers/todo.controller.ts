@@ -1,17 +1,17 @@
+import type { NextFunction, Request, Response } from "express"
 import {
-	TodoService,
 	type CreatedTodoResponse,
 	type CreateTodo,
 	type QueryTodoResponse,
 	type Todo,
-} from "@/services/todo.service";
-import type { NextFunction, Request, Response } from "express";
+	TodoService,
+} from "@/services/todo.service"
 
 export const TodoController = {
 	async createTodo(
-		req: Request<{}, CreatedTodoResponse, CreateTodo, {}>,
+		req: Request<unknown, CreatedTodoResponse, CreateTodo, unknown>,
 		res: Response<CreatedTodoResponse>,
-		next: NextFunction
+		next: NextFunction,
 	) {
 		try {
 			const response = await TodoService.create(req.body)
@@ -22,9 +22,9 @@ export const TodoController = {
 		}
 	},
 	async queryTodo(
-		req: Request<{}, QueryTodoResponse, Todo>,
+		req: Request<unknown, QueryTodoResponse, Todo>,
 		res: Response<QueryTodoResponse>,
-		next: NextFunction
+		next: NextFunction,
 	) {
 		try {
 			const response = await TodoService.query(req.body.id)
