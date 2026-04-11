@@ -6,17 +6,20 @@ import { TodoService } from "@/services/todo.service"
 
 // To-do Types
 export type Todo = z.infer<typeof todoSchema>
+
 export type CreateTodo = Omit<Todo, keyof Pick<Todo, "id">>
+export type UpdateTodo = Pick<Todo, "id"> & Partial<Todo>
 export type QueryTodo = Pick<Todo, "id">
 export type DeleteTodo = QueryTodo
 
 // Response Types
 export type TodoResponse = {
 	message: string
-	todo: CreateTodo
+	todo: Todo
 }
 export type CreatedTodoResponse = TodoResponse
 export type QueryTodoResponse = TodoResponse
+export type UpdateTodoResponse = TodoResponse
 export type DeleteTodoResponse = TodoResponse
 
 export const TodoController = {
@@ -40,6 +43,19 @@ export const TodoController = {
 	) {
 		try {
 			const response = await TodoService.query(req.body.id)
+
+			return res.status(200).json(response)
+		} catch (error) {
+			next(error)
+		}
+	},
+	async updateTodo(
+		req: Request<unknown, UpdateTodoResponse, UpdateTodo>,
+		res: Response<UpdateTodoResponse>,
+		next: NextFunction,
+	) {
+		try {
+			const response = await TodoService.update(req.body)
 
 			return res.status(200).json(response)
 		} catch (error) {
