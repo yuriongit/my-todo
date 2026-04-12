@@ -1,0 +1,25 @@
+# Build & Output
+dist/
+build/
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Environment & Logs
+.env
+.env.*
+*.log
+npm-debug.log*
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Version Control
+.git/
+
+# Public assets (usually you don't want to format SVGs/images)
+public/
