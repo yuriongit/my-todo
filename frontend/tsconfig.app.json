@@ -15,11 +15,27 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    // Configuration for restriction + improved type-safety
+		"paths": {
+         // App directory
+			"@app/*": ["./app/*"],
+         
+			// Source directory
+			"@/*": ["./src/*"],
+			"@components/*": ["./src/components/*"],
+		},
+		"allowUnusedLabels": false,
+		"noUncheckedSideEffectImports": true,
+		"allowUnreachableCode": false,
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"pretty": true,
+		// Configuration for restriction + improved type-safety
+
     /* Linting */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "app/App.tsx", "app/main.tsx"]
 }
