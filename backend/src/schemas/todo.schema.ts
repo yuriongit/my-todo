@@ -9,6 +9,8 @@ export const todoSchema = z.strictObject({
 export const createTodoSchema = todoSchema.omit({
    id: true,
 })
-export const queryTodoSchema = todoSchema.pick({ id: true })
+export const getTodoSchema = z.strictObject({
+   id: z.coerce.number()
+})
 export const updateTodoSchema = todoSchema.partial({ title: true, desc: true })
 export const deleteTodoSchema = todoSchema.pick({ id: true })
