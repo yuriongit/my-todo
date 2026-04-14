@@ -1,7 +1,7 @@
 import type { NextFunction, Response, Request } from "express"
 import { ZodError } from "zod/v4"
 import { z, type ZodObject } from "zod/v4"
-import { ErrorHandler } from "@middleware/error/errorHandler"
+import { ErrorHandler } from "@/middleware/error/error-handler"
 
 export const validateQuery = (schema: ZodObject) => async (
    req: Request,
@@ -10,7 +10,7 @@ export const validateQuery = (schema: ZodObject) => async (
 ) => {
    try {
       await schema.parseAsync(req.query)
-      
+
       // NOTE: For debugging
       const successMessage = `Request query passed request validation middleware (Zod)`
       console.log(successMessage)

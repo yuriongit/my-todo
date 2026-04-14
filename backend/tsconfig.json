@@ -8,22 +8,26 @@
 		"jsx": "react-jsx",
 		"allowJs": true,
 
-		// Configuration for restriction + improved type-safety
+		// Path alias + Configuration for restriction/improved type-safety
 		"paths": {
 			"@/*": ["./src/*"],
-
-			// App directory
-			"@app/*": ["./app/*"],
-			"@config/*": ["./app/config/*"],
-			"@tests/*": ["./app/tests/*"],
+         
+			// Shared directory
+			"@shared/*": ["../shared/*"],
 
 			// Source directory
-			"@controllers/*": ["./src/controllers/*"],
 			"@middleware/*": ["./src/middleware/*"],
-			"@repo/*": ["./src/repo/*"],
-			"@schemas/*": ["./src/schemas/*"],
-			"@services/*": ["./src/services/*"],
-			"@utils/*": ["./src/utils/*"]
+			"@schemas/*": ["../shared/schemas/*"],
+			"@utils/*": ["./src/utils/*"],
+			
+         // Core directory
+         "@controllers/*": ["./src/core/controllers/*"],
+			"@services/*": ["./src/core/services/*"],
+			"@repo/*": ["./src/core/repo/*"],
+         
+         // App directory
+         "@app/*": ["./src/app/*"],
+         "@config/*": ["./src/app/config/*"],
 		},
 		"allowUnusedLabels": false,
 		"noUncheckedSideEffectImports": true,

@@ -1,35 +1,21 @@
 import type { NextFunction, Request, Response } from "express"
-import type z from "zod/v4"
-import { TodoRepo } from "@/repo/todo.repo"
-import type { todoSchema } from "@/schemas/todo.schema"
-import { TodoService } from "@/services/todo.service"
-
-// To-do Types
-export type Todo = z.infer<typeof todoSchema>
-
-export type CreateTodo = Omit<Todo, keyof Pick<Todo, "id">>
-export type UpdateTodo = Pick<Todo, "id"> & Partial<Todo>
-export type GetTodo = Pick<Todo, "id">
-export type DeleteTodo = GetTodo
-
-// Query Types
-export type GetTodoQuery = {
-   id: string
-}
-
-// Response Types
-export type TodoResponse = {
-   message: string
-   todo: Todo
-}
-export type CreatedTodoResponse = TodoResponse
-export type GetTodoResponse = TodoResponse
-export type UpdateTodoResponse = TodoResponse
-export type DeleteTodoResponse = TodoResponse
+import { TodoRepo } from "@repo/todo.repo"
+import { TodoService } from "@services/todo.service"
+import type {
+   CreatedTodoResponse,
+   CreateTodo,
+   DeleteTodo,
+   DeleteTodoResponse,
+   GetTodoQuery,
+   GetTodoResponse,
+   Todo,
+   UpdateTodo,
+   UpdateTodoResponse
+} from "../../../../shared/types/todo.types"
 
 export const TodoController = {
    async createTodo(
-      req: Request<unknown, CreatedTodoResponse, CreateTodo, unknown>,
+      req: Request<unknown, CreatedTodoResponse, CreateTodo>,
       res: Response<CreatedTodoResponse>,
       next: NextFunction,
    ) {
