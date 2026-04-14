@@ -10,7 +10,8 @@
 		"@types/express-rate-limit": "^6.0.2",
 		"@types/express-slow-down": "^2.0.0",
 		"@types/jsonwebtoken": "^9.0.10",
-		"supabase": ">=1.8.1"
+		"supabase": ">=1.8.1",
+		"vitest": "^4.1.4"
 	},
 	"scripts": {
 		"format": "bunx --bun @biomejs/biome format --write",
@@ -18,6 +19,7 @@
 		"check": "bunx --bun @biomejs/biome check",
 		"lint:write": "bunx --bun @biomejs/biome lint --write",
 		"check:write": "bunx --bun @biomejs/biome check --write",
+      "test": "vitest",
 		"dev": "bun run --watch src/index.ts",
 		"start": "bun run src/app/index.ts"
 	},
