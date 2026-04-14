@@ -11,7 +11,7 @@ import type {
    Todo,
    UpdateTodo,
    UpdateTodoResponse
-} from "../../../../shared/types/todo.types"
+} from "@shared/index"
 
 export const TodoController = {
    async createTodo(

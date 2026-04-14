@@ -5,9 +5,9 @@ import type {
    GetTodoResponse,
    UpdateTodo,
    UpdateTodoResponse,
-} from "../../../../shared/types/todo.types"
+} from "@shared/index"
 import { TodoRepo } from "@repo/todo.repo"
-import { verifyTodoUpdates } from "@/core/repo/helpers/verify-todo-updates"
+import { verifyTodoUpdates } from "@repo/helpers/verify-todo-updates"
 
 export const TodoService = {
    async create(todo: CreateTodo): Promise<CreatedTodoResponse> {
