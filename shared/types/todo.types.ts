@@ -1,5 +1,5 @@
-import type { todoSchema } from "@shared/schemas/todo.schema"
 import type z from "zod/v4"
+import type { todoSchema } from "../schemas/todo.schema"
 
 // To-do Types
 export type Todo = z.infer<typeof todoSchema>

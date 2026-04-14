@@ -1,7 +1,7 @@
-import { ErrorHandler } from "@/middleware/error/error-handler";
-import { TodoRepo } from "../todo.repo";
-import { hasUpdates } from "@/utils/has-updates";
-import type { UpdateTodo } from "@/core/controllers/todo.controller";
+import { ErrorHandler } from "@middleware/error/error-handler";
+import { TodoRepo } from "@repo/todo.repo";
+import { hasUpdates } from "@utils/has-updates";
+import type { UpdateTodo } from "@shared/index";
 
 export const verifyTodoUpdates = async (todoInQuestion: UpdateTodo): Promise<boolean> => {
    const existingTodo = await TodoRepo.getById(todoInQuestion)

@@ -1,6 +1,6 @@
 import { ErrorHandler } from "@middleware/error/error-handler"
 import { supabase } from "@app/supabase/client"
-import type { CreateTodo, Todo, UpdateTodo } from "@shared/types/todo.types"
+import type { CreateTodo, Todo, UpdateTodo } from "@shared/index"
 
 type TodoResponse<TAction extends "created" | "retrieved" | "updated" | "deleted"> = {
    message: `To-do ${TAction} successfully`

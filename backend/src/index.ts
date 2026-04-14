@@ -5,7 +5,7 @@ import {
    deleteTodoSchema,
    getTodoSchema,
    updateTodoSchema
-} from "@shared/schemas/todo.schema"
+} from "@shared/index"
 import { handleError } from "@middleware/error/error-handler"
 import { TodoController } from "@controllers/todo.controller"
 import { validateQuery } from "@middleware/validators/todo.query.validator"
