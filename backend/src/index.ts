@@ -1,9 +1,14 @@
 import { app } from "@app/app"
-import { validateBody } from "@/middleware/validators/body.validator"
-import { createTodoSchema, deleteTodoSchema, getTodoSchema, updateTodoSchema } from "@schemas/todo.schema"
-import { handleError } from "@/middleware/error/errorHandler"
+import { validateBody } from "@middleware/validators/todo.body.validator"
+import {
+   createTodoSchema,
+   deleteTodoSchema,
+   getTodoSchema,
+   updateTodoSchema
+} from "@shared/schemas/todo.schema"
+import { handleError } from "@middleware/error/error-handler"
 import { TodoController } from "@controllers/todo.controller"
-import { validateQuery } from "@middleware/validators/query.validator"
+import { validateQuery } from "@middleware/validators/todo.query.validator"
 
 app.post("/todos", validateBody(createTodoSchema), TodoController.createTodo)
 app.get("/todos", validateQuery(getTodoSchema), TodoController.getTodo)

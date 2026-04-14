@@ -1,0 +1,9 @@
+{
+   "name": "my-todo-monorepo",
+   "private": true,
+   "workspaces": [
+     "backend",
+     "frontend",
+     "shared"
+   ]
+ }

@@ -1,7 +1,6 @@
+import { ErrorHandler } from "@middleware/error/error-handler"
 import { supabase } from "@app/supabase/client"
-import type { CreateTodo, Todo, UpdateTodo } from "@/controllers/todo.controller"
-import { ErrorHandler } from "@/middleware/error/errorHandler"
-import { verifyTodoUpdates } from "./helpers/verifyTodoUpdates"
+import type { CreateTodo, Todo, UpdateTodo } from "@shared/types/todo.types"
 
 type TodoResponse<TAction extends "created" | "retrieved" | "updated" | "deleted"> = {
    message: `To-do ${TAction} successfully`
@@ -29,7 +28,7 @@ export const TodoRepo = {
       }
    },
    async query(todoId: number): Promise<RepoQueryTodoResponse> {
-      const { data: todo, error } = await supabase
+      const { data, error } = await supabase
          .from("todo_items")
          .select("*")
          .eq("id", todoId)
@@ -43,12 +42,10 @@ export const TodoRepo = {
       }
       return {
          message: "To-do retrieved successfully",
-         todo: todo,
+         todo: data,
       }
    },
    async update(todoUpdates: UpdateTodo): Promise<RepoUpdateTodoResponse> {
-      await verifyTodoUpdates(todoUpdates)
-
       const { data, error } = await supabase
          .from("todo_items")
          .update(todoUpdates)
@@ -69,7 +66,7 @@ export const TodoRepo = {
       }
    },
    async delete(todoId: number): Promise<RepoDeleteTodoResponse> {
-      const { data: todo, error } = await supabase
+      const { data, error } = await supabase
          .from("todo_items")
          .delete()
          .eq("id", todoId)
@@ -85,7 +82,19 @@ export const TodoRepo = {
 
       return {
          message: "To-do deleted successfully",
-         todo: todo,
+         todo: data,
       }
    },
+   async getById(todoUpdates: UpdateTodo): Promise<Todo> {
+      const { data, error } = await supabase.from("todo_items").select("*").eq("id", todoUpdates.id).single()
+
+      if (error) {
+         throw new ErrorHandler(404, {
+            details: error.details,
+            message: "To-do does not exist",
+         })
+      }
+
+      return data
+   }
 }

@@ -12,5 +12,10 @@ export const createTodoSchema = todoSchema.omit({
 export const getTodoSchema = z.strictObject({
    id: z.coerce.number()
 })
-export const updateTodoSchema = todoSchema.partial({ title: true, desc: true })
-export const deleteTodoSchema = todoSchema.pick({ id: true })
+export const updateTodoSchema = todoSchema.partial({
+   title: true,
+   desc: true
+})
+export const deleteTodoSchema = todoSchema.pick({
+   id: true
+})
