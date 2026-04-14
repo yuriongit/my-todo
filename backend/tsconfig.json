@@ -8,9 +8,6 @@
 		"jsx": "react-jsx",
 		"allowJs": true,
 
-		// Types for testing w/ Bun
-		"types": ["bun"],
-
 		// Configuration for restriction + improved type-safety
 		"paths": {
 			"@/*": ["./src/*"],
