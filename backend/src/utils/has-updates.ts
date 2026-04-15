@@ -1,4 +1,4 @@
-import type { Todo, UpdateTodo } from "@/core/controllers/todo.controller";
+import type { Todo, UpdateTodo } from "@shared/index";
 
 export const hasUpdates = (incoming: UpdateTodo, existing: Todo): boolean => {
    const { id: incomingId, ...payload } = incoming
