@@ -1,10 +1,15 @@
 import type { Todo, UpdateTodo } from "@shared/index";
 
 export const hasUpdates = (incoming: UpdateTodo, existing: Todo): boolean => {
-   const { id: incomingId, ...payload } = incoming
-   const { id: existingId, ...source } = existing
+   const { id, ...payload } = incoming
+   const { id: srcId, ...source } = existing
+   
+   type payloadKeysProps = (keyof typeof payload)[]
 
-   return !Object.keys(incoming).every(
-      (key) => payload[key as keyof typeof payload] === source[key as keyof typeof source]
-   );
+   const payloadKeys = Object.keys(payload) as payloadKeysProps
+
+   // If any key matches the existing value, return false
+   return payloadKeys.every(
+      key => payload[key] !== source[key]
+   )
 }
